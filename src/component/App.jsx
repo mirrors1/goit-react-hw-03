@@ -6,6 +6,7 @@ import initContacts from './contacts.json';
 import s from './App.module.css';
 import Notification from './Notification/Notification';
 import { nanoid } from 'nanoid';
+import { Bounce, ToastContainer, toast } from 'react-toastify';
 
 const LS_KEY = 'Contacts-cd330120-98f4-4795-8a1e-2acb7efad19c';
 
@@ -29,10 +30,33 @@ function App() {
   const addContact = newContact => {
     const find = contacts.find(contact => contact.number === newContact.number);
     if (find) {
+      // toast('Wow so easy !');
+      toast.error('The phone already exists', {
+        position: 'top-right',
+        autoClose: 4000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: 'light',
+        transition: Bounce,
+      });
       return;
     }
     newContact.id = nanoid();
     setContacts(prev => [...prev, newContact]);
+    toast.success('Сontact added', {
+      position: 'top-right',
+      autoClose: 4000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+      theme: 'light',
+      transition: Bounce,
+    });
   };
 
   //Функція видалення контактів
@@ -92,6 +116,7 @@ function App() {
       ) : (
         <ContactList contacts={visibleContacts} onDelete={deleteContact} />
       )}
+      <ToastContainer />
     </div>
   );
 }
