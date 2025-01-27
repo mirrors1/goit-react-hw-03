@@ -4,6 +4,7 @@
   flex-direction: row;
   margin-right: 50px;
 }
+
 .name,
 .phone {
   font-family: 'Montserrat', sans-serif;
@@ -37,4 +38,22 @@
   color: #fff;
   outline: 0;
   box-shadow: 0 0 40px 40px #e74c3c inset;
+}
+.name {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  width: 150px;
+  text-align: left;
+}
+@media screen and (min-width: 375px) {
+}
+
+@media screen and (min-width: 768px) {
+}
+
+@media screen and (min-width: 1440px) {
+  .name {
+    width: 250px;
+  }
 }
